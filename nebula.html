@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NebulaHub - Free Forever</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1a0033 0%, #000000 50%, #001122 100%);
+            min-height: 100vh;
+            color: #ffffff;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(2px 2px at 10% 20%, rgba(138, 43, 226, 0.6), transparent 30%),
+                radial-gradient(1px 1px at 80% 40%, rgba(255, 255, 255, 0.8), transparent 20%),
+                radial-gradient(1px 1px at 30% 70%, rgba(75, 0, 130, 0.6), transparent 25%),
+                radial-gradient(2px 2px at 60% 10%, rgba(255, 255, 255, 0.7), transparent 15%),
+                radial-gradient(1px 1px at 90% 80%, rgba(138, 43, 226, 0.5), transparent 30%);
+            animation: drift 30s linear infinite;
+            opacity: 0.7;
+            z-index: -1;
+        }
+
+        .floating-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: rgba(138, 43, 226, 0.6);
+            border-radius: 50%;
+            animation: float 8s infinite ease-in-out;
+        }
+
+        .particle:nth-child(2) {
+            background: rgba(255, 255, 255, 0.8);
+            animation-delay: -2s;
+            animation-duration: 6s;
+        }
+
+        .particle:nth-child(3) {
+            background: rgba(75, 0, 130, 0.7);
+            animation-delay: -4s;
+            animation-duration: 10s;
+        }
+
+        .nav-container {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .nav-tab {
+            padding: 12px 24px;
+            background: linear-gradient(45deg, rgba(138, 43, 226, 0.8), rgba(75, 0, 130, 0.8));
+            border: 1px solid rgba(138, 43, 226, 0.5);
+            border-radius: 25px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(138, 43, 226, 0.3);
+            cursor: pointer;
+        }
+
+        .nav-tab:hover {
+            background: linear-gradient(45deg, rgba(138, 43, 226, 1), rgba(75, 0, 130, 1));
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(138, 43, 226, 0.5);
+        }
+
+        .nav-tab.active {
+            background: linear-gradient(45deg, #8a2be2, #4b0082);
+            box-shadow: 0 6px 25px rgba(138, 43, 226, 0.6);
+        }
+
+        .main-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 90%;
+            text-align: center;
+            padding: 2rem;
+            background: rgba(138, 43, 226, 0.1);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            border: 2px solid rgba(138, 43, 226, 0.3);
+            box-shadow: 
+                0 0 40px rgba(138, 43, 226, 0.4),
+                inset 0 0 30px rgba(255, 255, 255, 0.05);
+        }
+
+        .title {
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, #8a2be2, #4b0082, #6a5acd, #9370db);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradient-shift 4s ease-in-out infinite;
+            text-shadow: 
+                0 0 20px rgba(138, 43, 226, 0.7),
+                0 0 40px rgba(75, 0, 130, 0.5);
+        }
+
+        .subtitle {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+
+        .content-area {
+            display: none;
+        }
+
+        .content-area.active {
+            display: block;
+        }
+
+        .script-container {
+            margin: 2rem 0;
+        }
+
+        .script-label {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: #b0b0b0;
+        }
+
+        .script-textbox {
+            width: 100%;
+            min-height: 200px;
+            padding: 1.5rem;
+            background: rgba(0, 0, 0, 0.6);
+            border: 2px solid rgba(138, 43, 226, 0.6);
+            border-radius: 15px;
+            color: #e6e6fa;
+            font-family: 'Courier New', monospace;
+            font-size: 1rem;
+            resize: vertical;
+            box-shadow: 
+                0 0 25px rgba(138, 43, 226, 0.4),
+                inset 0 0 15px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .script-textbox:focus {
+            outline: none;
+            border-color: rgba(138, 43, 226, 0.9);
+            box-shadow: 
+                0 0 35px rgba(138, 43, 226, 0.6),
+                inset 0 0 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .copy-button {
+            margin-top: 1rem;
+            padding: 15px 30px;
+            background: linear-gradient(45deg, #8a2be2 0%, #4b0082 100%);
+            border: none;
+            border-radius: 25px;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(138, 43, 226, 0.5);
+        }
+
+        .copy-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(138, 43, 226, 0.7);
+        }
+
+        .tab-content {
+            font-size: 1.2rem;
+            color: #e0e0e0;
+            line-height: 1.6;
+            padding: 2rem 0;
+        }
+
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(45deg, #00c851, #00ff47);
+            color: #000;
+            padding: 15px 25px;
+            border-radius: 15px;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0, 200, 81, 0.4);
+            transform: translateX(400px);
+            transition: transform 0.3s ease;
+            z-index: 1100;
+        }
+
+        .toast.show {
+            transform: translateX(0);
+        }
+
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes title-glow {
+            0%, 100% {
+                text-shadow: 
+                    0 0 20px rgba(138, 43, 226, 0.7),
+                    0 0 40px rgba(75, 0, 130, 0.5);
+            }
+            50% {
+                text-shadow: 
+                    0 0 30px rgba(138, 43, 226, 0.9),
+                    0 0 60px rgba(75, 0, 130, 0.7),
+                    0 0 80px rgba(106, 90, 205, 0.4);
+            }
+        }
+
+        @keyframes text-fade-in {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes text-float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-5px);
+            }
+        }
+
+        @keyframes text-slide-in {
+            0% {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes text-pulse {
+            0%, 100% {
+                opacity: 0.7;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes drift {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            33% {
+                transform: translate(100px, -50px) rotate(120deg);
+            }
+            66% {
+                transform: translate(-80px, 100px) rotate(240deg);
+            }
+            100% {
+                transform: translate(0, 0) rotate(360deg);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0.3;
+            }
+            25% {
+                transform: translateY(-50px) rotate(90deg);
+                opacity: 0.8;
+            }
+            50% {
+                transform: translateY(-100px) rotate(180deg);
+                opacity: 1;
+            }
+            75% {
+                transform: translateY(-150px) rotate(270deg);
+                opacity: 0.8;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2.8rem;
+            }
+            .subtitle {
+                font-size: 1.1rem;
+            }
+            .container {
+                width: 95%;
+                padding: 1.5rem;
+            }
+            .nav-container {
+                top: 10px;
+                right: 10px;
+                gap: 10px;
+            }
+            .nav-tab {
+                padding: 10px 18px;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Tabs -->
+    <div class="nav-container">
+        <div class="nav-tab active" onclick="showTab('home')">Home</div>
+        <div class="nav-tab" onclick="showTab('discord')">Discord</div>
+        <div class="nav-tab" onclick="showTab('faq')">FAQ</div>
+    </div>
+
+    <!-- Floating Particles -->
+    <div class="floating-particles">
+        <div class="particle" style="left: 10%; top: 20%;"></div>
+        <div class="particle" style="left: 80%; top: 30%;"></div>
+        <div class="particle" style="left: 30%; top: 60%;"></div>
+        <div class="particle" style="left: 70%; top: 80%;"></div>
+        <div class="particle" style="left: 50%; top: 10%;"></div>
+        <div class="particle" style="left: 20%; top: 70%;"></div>
+        <div class="particle" style="left: 90%; top: 50%;"></div>
+        <div class="particle" style="left: 40%; top: 90%;"></div>
+    </div>
+
+    <div class="main-container">
+        <div class="container">
+            <!-- Home Content -->
+            <div class="content-area active" id="home-content">
+                <h1 class="title">Nebula</h1>
+                <p class="subtitle">
+                    NebulaHub is free! Forever! We have many features all for free! No whitelist no premium! Join us today!
+                </p>
+                
+                <div class="script-container">
+                    <div class="script-label">This is where the script will be</div>
+                    <textarea 
+                        class="script-textbox" 
+                        id="scriptText"
+                        placeholder="Your script content will appear here..."
+                    >-- NebulaHub Script --
+print("Welcome to NebulaHub!")
+print("Enjoy unlimited features for free!")
+
+-- Add your amazing scripts here
+-- No premium required, no whitelist needed!
+
+game:GetService("StarterGui"):SetCore("SendNotification", {
+    Title = "NebulaHub";
+    Text = "Successfully loaded!";
+    Duration = 5;
+})</textarea>
+                    <button class="copy-button" onclick="copyScript()">
+                        📋 Copy Script
+                    </button>
+                </div>
+            </div>
+
+            <!-- Discord Content -->
+            <div class="content-area" id="discord-content">
+                <h1 class="title">Nebula</h1>
+                <div class="tab-content">
+                    Wanna join our discord? We would love to see you in here! You can sneak peaks for future updates and more!
+                </div>
+            </div>
+
+            <!-- FAQ Content -->
+            <div class="content-area" id="faq-content">
+                <h1 class="title">Nebula</h1>
+                <div class="tab-content">
+                    FAQ will be added soon
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast">
+        ✅ Script copied to clipboard!
+    </div>
+
+    <script>
+        // Tab switching functionality
+        function showTab(tabName) {
+            // Hide all content areas
+            const contentAreas = document.querySelectorAll('.content-area');
+            contentAreas.forEach(area => area.classList.remove('active'));
+            
+            // Remove active class from all tabs
+            const tabs = document.querySelectorAll('.nav-tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            // Show selected content area
+            document.getElementById(tabName + '-content').classList.add('active');
+            
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+        }
+
+        // Copy script function
+        function copyScript() {
+            const scriptText = document.getElementById('scriptText');
+            const toast = document.getElementById('toast');
+            
+            scriptText.select();
+            scriptText.setSelectionRange(0, 99999);
+            
+            try {
+                document.execCommand('copy');
+                showToast();
+            } catch (err) {
+                navigator.clipboard.writeText(scriptText.value).then(() => {
+                    showToast();
+                }).catch(() => {
+                    alert('Copy failed! Please copy manually.');
+                });
+            }
+        }
+
+        // Show success toast
+        function showToast() {
+            const toast = document.getElementById('toast');
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // Keyboard shortcut for copying
+        document.addEventListener('DOMContentLoaded', function() {
+            const scriptTextbox = document.getElementById('scriptText');
+            if (scriptTextbox) {
+                scriptTextbox.addEventListener('keydown', function(e) {
+                    if (e.ctrlKey && e.key === 'c') {
+                        setTimeout(showToast, 100);
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
