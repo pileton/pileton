@@ -1,0 +1,62 @@
+/* === Gradient Links === */
+a {
+  background: linear-gradient(90deg, #ff7e5f, #feb47b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: background-position 0.5s ease;
+  background-size: 200% 100%;
+  background-position: 0% 0;
+}
+
+a:hover {
+  background-position: 100% 0;
+}
+
+/* === Gradient Channels === */
+.channel-2QD9_O, /* Channel names container */
+.name-1jkAdW {  /* Channel text */
+  background: linear-gradient(90deg, #00d2ff, #3a47d5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: background-position 0.5s ease;
+  background-size: 200% 100%;
+  background-position: 0% 0;
+}
+
+.channel-2QD9_O:hover, .name-1jkAdW:hover {
+  background-position: 100% 0;
+}
+
+/* === Animated Gradient Usernames === */
+.username-1A8OIy {
+  font-weight: 600;
+  background: linear-gradient(270deg, #ff00cc, #333399, #00ffff, #ff00cc);
+  background-size: 600% 600%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientShift 8s ease infinite;
+}
+
+/* Gradient animation keyframes */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Optional: Add subtle glow to usernames */
+.username-1A8OIy {
+  text-shadow: 0 0 5px rgba(255, 0, 204, 0.8), 0 0 10px rgba(0, 255, 255, 0.6);
+}
+
+/* === Optional: Cool scrollbar gradient for channels list === */
+.scrollbar-1dS_jS::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #ff7e5f, #feb47b);
+  border-radius: 6px;
+}
