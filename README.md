@@ -30,10 +30,8 @@ I build cool web/view applications and Python projects, with a focus on **modern
   <img src="https://github-readme-activity-graph.vercel.app/graph?username=pileton&bg_color=00000000&color=888888&line=888888&point=555555&area=true&hide_border=true" />
 </p>
 
-### Contributions
-
 <p align="center">
-  <img src="https://raw.githubusercontent.com/pileton/pileton/output/github-contribution-grid-snake.svg" alt="GitHub contribution snake" />
+  <img src="https://komarev.com/ghpvc/?username=pileton />
 </p>
 
 ---
