@@ -1,56 +1,23 @@
-# Hi, I'm Pileton.
+<div align="center">
 
-### Web Developer 
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/hero-dark.svg"><img src="assets/hero-light.svg" width="100%" alt="Hi, I&#x27;m pileton"></picture>
 
-I build cool web/view applications and Python projects, with a focus on **modern web development and useful software**.
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/social-l-dark.svg"><img src="assets/social-l-light.svg" width="27.254%" alt=""></picture><a href="https://t.me/"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/social-1-dark.svg"><img src="assets/social-1-light.svg" width="18.122%" alt="telegram"></picture></a><a href="https://discord.com/"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/social-2-dark.svg"><img src="assets/social-2-light.svg" width="16.552%" alt="discord"></picture></a><a href="https://x.com/"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/social-3-dark.svg"><img src="assets/social-3-light.svg" width="10.814%" alt="x"></picture></a><picture><source media="(prefers-color-scheme: dark)" srcset="assets/social-r-dark.svg"><img src="assets/social-r-light.svg" width="27.254%" alt=""></picture>
 
-### What I can work with
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/about-dark.svg"><img src="assets/about-light.svg" width="100%" alt="About me"></picture>
 
-<table>
-<tr>
-<td><strong>Frontend</strong></td>
-<td>HTML · CSS · JavaScript</td>
-</tr>
-<tr>
-<td><strong>Backend</strong></td>
-<td>Python · Node.js</td>
-</tr>
-</table>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/stack-dark.svg"><img src="assets/stack-light.svg" width="100%" alt="Tech stack"></picture>
 
----
+<a href="https://github.com/pileton/rigby-launcher"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/project-rigby-launcher-dark.svg"><img src="assets/project-rigby-launcher-light.svg" width="49%" alt="rigby-launcher"></picture></a>
 
-### GitHub activity
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/stats-dark.svg"><img src="assets/stats-light.svg" width="100%" alt="GitHub activity"></picture>
 
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=pileton&show_icons=true&hide_border=true&theme=transparent&rank_icon=github" height="170" />
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=pileton&hide_border=true&theme=transparent" height="170" />
-</p>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/streak-dark.svg"><img src="assets/streak-light.svg" width="100%" alt="Streak"></picture>
 
-<p align="center">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=pileton&bg_color=00000000&color=888888&line=888888&point=555555&area=true&hide_border=true" />
-</p>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/wave-dark.svg"><img src="assets/wave-light.svg" width="100%" alt=""></picture>
 
-<p align="center">
-  <img src="https://komarev.com/ghpvc/?username=pileton />
-</p>
+<a href="https://github.com/pileton?tab=repositories"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/button-1-dark.svg"><img src="assets/button-1-light.svg" width="auto" alt="All repositories"></picture></a>
 
----
+<a href="https://metawka.github.io/expressive-profile/?from=pileton"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/credit-dark.svg"><img src="assets/credit-light.svg" width="auto" alt="Made with Expressive Profile"></picture></a>
 
-### Currently
-
-Building projects, improving my development skills, and learning by building random and fun stuff.
-
-### Languages
-what i speak 
-
-🇬🇧 English
-🇫🇷 Français
-🇩🇪 Deutsch
-
----
-
-<p align="center">
-  <a href="https://github.com/pileton">GitHub</a>
-  &nbsp;·&nbsp;
-  <a href="https://github.com/pileton?tab=repositories">Projects</a>
-</p>
+</div>
