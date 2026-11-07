@@ -1,7 +1,7 @@
 {
   "version": 1,
   "login": "pileton",
-  "seed": "#99989E",
+  "seed": "#C3BCCC",
   "seedFromAvatar": true,
   "scheme": "tonalSpot",
   "motion": true,
@@ -21,9 +21,9 @@
   "hero": {
     "greeting": "Hi, I'm",
     "name": "pileton",
-    "subtitle": "I build websites and small useful tools.",
+    "subtitle": "i build all sorts of stuff but mostly websites or desktop apps",
     "typing": true,
-    "avatarShape": "cookie",
+    "avatarShape": "cookie12",
     "chips": [
       {
         "icon": "location_on",
@@ -31,11 +31,11 @@
       },
       {
         "icon": "code",
-        "label": "javaScript · Python"
+        "label": "JavaScript | python"
       },
       {
-        "icon": "star",
-        "label": "html · css"
+        "icon": "group",
+        "label": "Very stupid"
       }
     ]
   },
@@ -63,16 +63,20 @@
         "title": "Main",
         "items": [
           {
-            "icon": "brand:python",
-            "label": "Python"
-          },
-          {
             "icon": "brand:javascript",
             "label": "JavaScript"
           },
           {
+            "icon": "brand:python",
+            "label": "Python"
+          },
+          {
             "icon": "brand:css",
             "label": "Css"
+          },
+          {
+            "icon": "brand:html5",
+            "label": "Html"
           }
         ]
       },
@@ -116,24 +120,22 @@
   "socials": {
     "items": [
       {
-        "icon": "brand:telegram",
-        "url": "https://t.me/"
-      },
-      {
         "icon": "brand:discord",
-        "url": "https://discord.com/"
-      },
-      {
-        "icon": "brand:x",
-        "url": "https://x.com/"
+        "url": "https://discord.gg/MPzuWvg2BT"
       }
     ],
     "variant": "chip",
-    "fill": "tonal",
+    "fill": "brand",
     "card": true
   },
   "buttons": {
     "items": [
+      {
+        "icon": "language",
+        "label": "My website",
+        "url": "https://rigbyhub.xyz",
+        "style": "filled"
+      },
       {
         "icon": "book_2",
         "label": "All repositories",
